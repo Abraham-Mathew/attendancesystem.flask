@@ -10,7 +10,6 @@ import numpy as np
 import pandas as pd 
 import os
 import matplotlib.pyplot as plt
-get_ipython().run_line_magic('matplotlib', 'inline')
 from datetime import datetime
 import pickle
 
@@ -18,8 +17,9 @@ import pickle
 # In[2]:
 
 
-def markAttendance(name,top,right,left,bottom):            
-    df = pd.read_csv('F:/Durham/Courses/AIDI/S2/2005 Capstone 2/Project/face-recognition-python-code/Attendance.csv',index_col=False)
+def markAttendance(name,top,right,left,bottom):
+    csvPath = 'F:/Durham/Courses/AIDI/S2/2005 Capstone 2/Project/face-recognition-python-code/Attendance.csv'   
+    df = pd.read_csv(csvPath,index_col=False)
     nameList = []
     nameList = df['name'].tolist()
     now = datetime.now()
@@ -31,7 +31,7 @@ def markAttendance(name,top,right,left,bottom):
         df = df.append(df2, ignore_index=False)
     else: 
         df.loc[df["name"] == name, "timeout"] = time    
-    df.to_csv('F:/Durham/Courses/AIDI/S2/2005 Capstone 2/Project/face-recognition-python-code/Attendance.csv',index=False)
+    df.to_csv(csvPath,index=False)
 
 
 # In[3]:
